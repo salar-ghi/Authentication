@@ -157,3 +157,4 @@ C:\Users\s.ghahremani\source\repos\Authentication\Identity\src\IdentityServer\ob
 C:\Users\s.ghahremani\source\repos\Authentication\Identity\src\IdentityServer\bin\Debug\net8.0\Duende.IdentityServer.AspNetIdentity.dll
 C:\Users\s.ghahremani\source\repos\Authentication\Identity\src\IdentityServer\bin\Debug\net8.0\Duende.IdentityServer.EntityFramework.dll
 C:\Users\s.ghahremani\source\repos\Authentication\Identity\src\IdentityServer\bin\Debug\net8.0\Duende.IdentityServer.EntityFramework.Storage.dll
+C:\Users\s.ghahremani\source\repos\Authentication\Identity\src\IdentityServer\obj\Debug\net8.0\IdentityServer.sourcelink.json

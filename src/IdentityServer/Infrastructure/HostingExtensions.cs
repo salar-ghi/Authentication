@@ -22,8 +22,6 @@ internal static class HostingExtensions
         builder.Services.AddDbContext<IdentityServer.Data.DbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-        builder.Services.AddControllers();
-
         builder.Services.AddIdentity<AppUser, IdentityRole>()
             .AddEntityFrameworkStores<IdentityServer.Data.DbContext>()
             .AddDefaultTokenProviders();
@@ -90,6 +88,7 @@ internal static class HostingExtensions
         //            RoleClaimType = "role",
         //        };
         //    });
+        builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
@@ -102,14 +101,14 @@ internal static class HostingExtensions
 
         if (app.Environment.IsDevelopment())
         {
-            app.UseDeveloperExceptionPage();
+            //app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI();
         }
 
         //InitializeDatabase(app); ????????
 
-
+        app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseIdentityServer();
@@ -119,10 +118,7 @@ internal static class HostingExtensions
         // uncomment if you want to add a UI
         //app.MapRazorPages().RequireAuthorization();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.MapControllers();
 
         using (var scope = app.Services.CreateScope())
         {
