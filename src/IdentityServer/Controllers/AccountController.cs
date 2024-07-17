@@ -100,6 +100,7 @@ public class AccountController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Login(LoginDto dto)
     {
+        dto.ReturnUrl = null;
         var context = await _interaction.GetAuthorizationContextAsync(dto.ReturnUrl);
         if (context is not null)
         {
@@ -119,7 +120,7 @@ public class AccountController : ControllerBase
         {
             var userEmail = await _userManager.FindByEmailAsync(dto.Email);
             var sub = CryptoRandom.CreateUniqueId(format: CryptoRandom.OutputFormat.Hex);
-            await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, sub, user.UserName, clientId: context?.Client.ClientId));
+            //await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, sub, user.Name, true, clientId: context?.Client.ClientId));
 
             //Duende.IdentityServer.Telemetry.Metrics.UserLogin(context?.Client.ClientId, IdentityServerConstants.LocalIdentityProvider);
             var props = new AuthenticationProperties();
